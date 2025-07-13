@@ -1,4 +1,5 @@
 streamlit
+stchess
 python-chess
 stockfish
 Pillow
