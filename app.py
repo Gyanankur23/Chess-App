@@ -51,7 +51,7 @@ hr.custom {
 
 # ---- Banner Image ----
 st.image(
-    "https://upload.wikimedia.org/wikipedia/commons/7/7e/Chess_board_opening_staunton.jpg",
+    "https://images.unsplash.com/photo-1519125323398-675f0ddb6308",
     caption="Let the games begin!",
     use_container_width=True,
 )
