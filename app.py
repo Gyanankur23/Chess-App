@@ -7,7 +7,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ---- Chess Banner (Chess.com-style) ----
+# ---- Chess Banner ----
 st.markdown("""
 <style>
 .chess-banner {
@@ -64,24 +64,14 @@ Enjoy interactive gameplay, smart AI opponents, deep puzzle-solving, and robust 
 
 Use the sidebar to navigate between game modes, puzzles, analysis, leaderboards, and settings.  
 **Tip:** Personalize your experience in the Settings page!
-
 """)
 
-# ---- Chessboard Section (Demo) ----
+# ---- Chessboard Section (using stchess) ----
 st.header("🕹️ Play Chess!")
 
-import chess
-from st_chessboard import st_chessboard
+from stchess import st_chess
 
-if "board" not in st.session_state:
-    st.session_state.board = chess.Board()
-
-fen = st_chessboard(st.session_state.board.fen(), key="main_board", width=400)
-
-if fen != st.session_state.board.fen():
-    st.session_state.board.set_fen(fen)
-
-st.markdown(f"**Current FEN:** `{st.session_state.board.fen()}`")
+st_chess()
 
 # ---- Credits & Social ----
 st.markdown("""
