@@ -3,4 +3,3 @@ stchess
 python-chess
 stockfish
 Pillow
-streamlit-chessboard
