@@ -53,7 +53,7 @@ hr.custom {
 st.image(
     "https://upload.wikimedia.org/wikipedia/commons/7/7e/Chess_board_opening_staunton.jpg",
     caption="Let the games begin!",
-    use_column_width=True,
+    use_container_width=True,
 )
 
 # ---- App Introduction & Features ----
