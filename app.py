@@ -7,51 +7,42 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ---- Custom CSS for Chess.com-like Look ----
+# ---- Chess Banner (Chess.com-style) ----
 st.markdown("""
 <style>
-@keyframes slideIn {
-  from {opacity: 0; transform: translateY(-20px);}
-  to {opacity: 1; transform: translateY(0);}
+.chess-banner {
+    background: linear-gradient(90deg, #f8f9fa 0%, #d6eaff 100%);
+    border-radius: 18px;
+    box-shadow: 0 6px 20px rgba(44,62,80,0.08);
+    padding: 32px 0 16px 0;
+    margin: 24px 0;
 }
-.banner {
-  animation: slideIn 1.5s ease-in-out;
-  text-align: center;
-  font-size: 48px;
-  font-family: 'Segoe UI', 'Arial', sans-serif;
-  font-weight: bold;
-  margin-top: 20px;
-  color: #2e4053;
-  letter-spacing: 2px;
-  text-shadow: 1px 2px 8px #ccd6df;
+.chess-banner-text {
+    font-size: 52px;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    font-weight: 800;
+    color: #2e4053;
+    letter-spacing: 2px;
+    text-shadow: 1px 2px 8px #b5c5d6;
+    text-align: center;
 }
-.subtitle {
-  text-align: center;
-  font-size: 22px;
-  font-family: 'Segoe UI', 'Arial', sans-serif;
-  color: #566573;
-  margin-bottom: 28px;
-}
-hr.custom {
-  border: 0;
-  height: 2px;
-  background: linear-gradient(to right, #83a4d4, #b6fbff);
-  margin-top: 22px;
-  margin-bottom: 32px;
-}
-.sidebar .sidebar-content {
-  background-color: #f8f9fa !important;
+.chess-banner-sub {
+    font-size: 22px;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    color: #1a5276;
+    text-align: center;
+    margin-top: 10px;
 }
 </style>
-
-<div class="banner">♟️ Welcome to ChessMaster</div>
-<div class="subtitle">Your chess playground: Play bots, puzzles, analysis, and more&mdash;with full customization!</div>
-<hr class="custom">
+<div class="chess-banner">
+  <div class="chess-banner-text">♟️ ChessMaster Arena</div>
+  <div class="chess-banner-sub">Play, Learn, Analyze &amp; Conquer – Your Chess Journey Starts Here!</div>
+</div>
 """, unsafe_allow_html=True)
 
 # ---- Banner Image ----
 st.image(
-    "https://images.unsplash.com/photo-1519125323398-675f0ddb6308",
+    "https://upload.wikimedia.org/wikipedia/commons/7/7e/Chess_board_opening_staunton.jpg",
     caption="Let the games begin!",
     use_container_width=True,
 )
@@ -75,6 +66,22 @@ Use the sidebar to navigate between game modes, puzzles, analysis, leaderboards,
 **Tip:** Personalize your experience in the Settings page!
 
 """)
+
+# ---- Chessboard Section (Demo) ----
+st.header("🕹️ Play Chess!")
+
+import chess
+from st_chessboard import st_chessboard
+
+if "board" not in st.session_state:
+    st.session_state.board = chess.Board()
+
+fen = st_chessboard(st.session_state.board.fen(), key="main_board", width=400)
+
+if fen != st.session_state.board.fen():
+    st.session_state.board.set_fen(fen)
+
+st.markdown(f"**Current FEN:** `{st.session_state.board.fen()}`")
 
 # ---- Credits & Social ----
 st.markdown("""
